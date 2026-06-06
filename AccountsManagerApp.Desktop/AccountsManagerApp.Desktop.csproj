@@ -30,4 +30,15 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Components\InputComponentMail\InputComponentMail.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Data\users.json" />
+    <Content Include="Data\users.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

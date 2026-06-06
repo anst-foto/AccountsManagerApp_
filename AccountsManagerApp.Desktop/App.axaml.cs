@@ -1,3 +1,6 @@
+using AccountsManagerApp.Desktop.Windows.RegistrationWindow;
+using AccountsManagerApp.Desktop.Windows.RestoringAccessWindows;
+
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;

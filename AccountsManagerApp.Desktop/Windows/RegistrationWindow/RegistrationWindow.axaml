@@ -1,14 +1,9 @@
-<Window xmlns="https://github.com/avaloniaui"
+﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:c="using:AccountsManagerApp.Desktop.Components"
-
-        x:Class="AccountsManagerApp.Desktop.AuthWindow"
-
-        Title="{StaticResource ResourceKey=Title}"
-
-        Width="350" Height="250"
-        WindowStartupLocation="CenterScreen">
-
+        x:Class="AccountsManagerApp.Desktop.Windows.RegistrationWindow.RegistrationWindow"
+        Width="600" Height="330"
+        Title="{StaticResource ResourceKey=Title}">
   <Window.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
@@ -16,30 +11,31 @@
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Window.Resources>
-
   <Window.Styles>
     <StyleInclude Source="../../Styles/Styles.axaml" />
   </Window.Styles>
-
   <StackPanel Orientation="Vertical">
     <Panel Classes="center">
-      <TextBlock Text="Авторизация"
+      <TextBlock Text="Регистрация"
                  Classes="title" />
     </Panel>
 
     <StackPanel Orientation="Vertical">
-      <c:InputComponentMail x:Name="Input_Login"
-                            Placeholder="Введите логин"
-                            Label="Логин" />
+      <c:InputComponentMail x:Name="Input_Mail"
+                            Placeholder="Введите почту"
+                            Label="Почта" />
       <c:InputComponentPassword x:Name="Input_Password"
                                 Placeholder="Введите пароль"
                                 Label="Пароль" />
+      <c:InputComponentPasswordConfirm x:Name="Input_Password_Confirm"
+                                       Placeholder="Введите пароль повторно"
+                                       Label="Повторите пароль" />
     </StackPanel>
 
     <StackPanel Orientation="Horizontal"
                 Classes="center">
       <Button x:Name="Button_Login"
-              Content="Войти"
+              Content="Зарегистрироваться"
               Classes="login"
               Template="{StaticResource ResourceKey=ButtonLeftTemplate}"
               Click="Button_Login_OnClick" />
@@ -51,11 +47,10 @@
     </StackPanel>
     <StackPanel Orientation="Horizontal"
                 Classes="center">
-      <HyperlinkButton Content="Зарегистрироваться"
-                       Click="Open_RegistrationWindow_OnClick" />
-      <HyperlinkButton Content="Забыли пароль?"
+      <HyperlinkButton Content="Уже есть аккаунт? Войти"
+                       Click="Open_AuthWindow_OnClick" />
+      <HyperlinkButton Content="Восстановить доступ"
                        Click="Open_RestoringAccessWindow_OnClick" />
     </StackPanel>
-
   </StackPanel>
 </Window>

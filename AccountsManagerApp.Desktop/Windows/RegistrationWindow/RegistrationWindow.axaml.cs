@@ -1,34 +1,36 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 
 using AccountsManagerApp.Desktop.Data;
-using AccountsManagerApp.Desktop.Windows.RegistrationWindow;
 using AccountsManagerApp.Desktop.Windows.RestoringAccessWindows;
 
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 
 using MsBox.Avalonia;
 
-namespace AccountsManagerApp.Desktop;
+namespace AccountsManagerApp.Desktop.Windows.RegistrationWindow;
 
-public partial class AuthWindow : Window
+public partial class RegistrationWindow : Window
 {
-    public AuthWindow()
+    public RegistrationWindow()
     {
         InitializeComponent();
     }
 
+    private void Button_Cancel_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var Window = new AuthWindow();
+        Window.Show();
+        this.Close();
+    }
+
     private async void Button_Login_OnClick(object? sender, RoutedEventArgs e)
     {
-        var login = Input_Login.Value;
-        var password = Input_Password.Value;
-
-        if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
+        if (string.IsNullOrWhiteSpace(Input_Mail.Value) || string.IsNullOrWhiteSpace(Input_Password.Value))
         {
             await MessageBoxManager
                 .GetMessageBoxStandard("Ошибка", "Поля почты и пароля не могут быть пустыми")
@@ -36,7 +38,7 @@ public partial class AuthWindow : Window
             return;
         }
 
-        if (Input_Login.HasErrors || Input_Password.HasErrors)
+        if (Input_Mail.HasErrors || Input_Password.HasErrors)
         {
             await MessageBoxManager
                 .GetMessageBoxStandard("Ошибка", "Пожалуйста, исправьте ошибки в полях ввода перед регистрацией.")
@@ -44,8 +46,19 @@ public partial class AuthWindow : Window
             return;
         }
 
+        if (Input_Password_Confirm.Value != Input_Password.Value)
+        {
+            await MessageBoxManager
+                .GetMessageBoxStandard("Ошибка", "Повторный пароль не соответствует паролю")
+                .ShowAsync();
+            return;
+        }
+
+
         string filePath = Path.Combine("Data", "users.json");
         List<UserAccount> usersList = new();
+
+
         if (File.Exists(filePath))
         {
             string existingJson = await File.ReadAllTextAsync(filePath);
@@ -55,27 +68,31 @@ public partial class AuthWindow : Window
             }
         }
 
-        if (!usersList.Any(u => string.Equals(u.Email, login)))
+        if (usersList.Any(u => string.Equals(u.Email, Input_Mail.Value)))
         {
             await MessageBoxManager
-                .GetMessageBoxStandard("Ошибка авторизаций", "Пользователь с такой почтой не зарегистрирован")
+                .GetMessageBoxStandard("Ошибка регистрации", "Пользователь с такой почтой уже зарегистрирован")
                 .ShowAsync();
             return;
         }
 
-        var Window = new MainWindow();
+        var newUser = new UserAccount(Input_Mail.Value, Input_Password.Value);
+        usersList.Add(newUser);
+
+        string updatedJson = JsonSerializer.Serialize(usersList);
+        await File.WriteAllTextAsync(filePath, updatedJson);
+
+        await MessageBoxManager
+            .GetMessageBoxStandard("Успех", "Регистрация успешно завершена!")
+            .ShowAsync();
+        var Window = new AuthWindow();
         Window.Show();
         this.Close();
     }
 
-    private void Button_Cancel_OnClick(object? sender, RoutedEventArgs e)
+    private void Open_AuthWindow_OnClick(object? sender, RoutedEventArgs e)
     {
-        Environment.Exit(0);
-    }
-
-    private void Open_RegistrationWindow_OnClick(object? sender, RoutedEventArgs e)
-    {
-        var authWindow = new RegistrationWindow();
+        var authWindow = new AuthWindow();
         authWindow.Show();
         this.Close();
     }
