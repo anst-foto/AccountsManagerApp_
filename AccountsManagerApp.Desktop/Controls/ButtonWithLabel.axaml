@@ -1,0 +1,26 @@
+﻿<UserControl
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="using:AccountsManagerApp.Desktop.Controls"
+  x:Class="AccountsManagerApp.Desktop.Controls.ButtonWithLabel"
+  x:DataType="local:ButtonWithLabel">
+
+  <StackPanel
+    Spacing="5">
+    
+    <!-- ReSharper disable Xaml.InvalidType -->
+    <TextBlock
+      Text="{Binding $parent[local:ButtonWithLabel].Label}"
+      VerticalAlignment="Center"
+      HorizontalAlignment="Center" />
+    
+    <Button
+      Classes="Click"
+      Content="{Binding $parent[local:ButtonWithLabel].ButtonContent}"
+      Width="{Binding $parent[local:ButtonWithLabel].ButtonWidth}"
+      Click="OnButtonClick" />
+    <!-- ReSharper restore Xaml.InvalidType -->
+
+  </StackPanel>
+
+</UserControl>
