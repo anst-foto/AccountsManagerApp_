@@ -6,7 +6,7 @@
   Title=""
   WindowStartupLocation="CenterScreen"
   CanResize="False"
-  Height="510"
+  Height="530"
   Width="370">
 
   <StackPanel
@@ -15,9 +15,7 @@
     VerticalAlignment="Center"
     Spacing="30">
 
-    <Grid
-      HorizontalAlignment="Stretch"
-      VerticalAlignment="Stretch">
+    <Grid HorizontalAlignment="Stretch">
 
       <Button
         Classes="Return"
