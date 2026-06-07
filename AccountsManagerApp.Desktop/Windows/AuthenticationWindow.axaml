@@ -1,0 +1,53 @@
+﻿<Window
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:controls="using:AccountsManagerApp.Desktop.Controls"
+  x:Class="AccountsManagerApp.Desktop.Windows.AuthenticationWindow"
+  Title=""
+  WindowStartupLocation="CenterScreen"
+  CanResize="False"
+  Height="530"
+  Width="370">
+
+  <StackPanel
+    Orientation="Vertical"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Center"
+    Spacing="30">
+
+    <TextBlock
+      Classes="Title"
+      Text="Аутентификация" />
+
+    <controls:InputWithLabel
+      x:Name="InputEmail"
+      Label="Почта"
+      ControlWidth="250" />
+
+    <StackPanel Spacing="5">
+      <controls:InputWithLabel
+        x:Name="InputPassword"
+        PasswordChar="●"
+        Label="Пароль"
+        ControlWidth="250" />
+
+      <Button
+        Classes="Link"
+        Content="Забыл пароль"
+        Click="OnRecoveryButton" />
+    </StackPanel>
+
+    <Button
+      Classes="Click"
+      Content="Войти"
+      Width="250"
+      Click="OnAuthenticationButton" />
+
+    <controls:ButtonWithLabel
+      Label="Ещё нет аккаунта?"
+      ButtonContent="Зарегистрироваться"
+      ButtonWidth="250"
+      Click="OnRegistrationButton" />
+  </StackPanel>
+
+</Window>

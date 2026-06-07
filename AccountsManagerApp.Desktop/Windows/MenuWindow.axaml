@@ -1,0 +1,33 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:AccountsManagerApp.Desktop.Controls"
+        x:Class="AccountsManagerApp.Desktop.Windows.MenuWindow"
+        Title="Меню"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Height="430"
+        Width="370">
+
+  <StackPanel Orientation="Vertical"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Spacing="30">
+
+    <TextBlock Classes="Title"
+               Text="Меню" />
+
+    <controls:ButtonWithLabel Label="Ещё нет аккаунта?"
+                              ButtonContent="Зарегистрироваться"
+                              ButtonWidth="250" />
+
+    <controls:ButtonWithLabel Label="Уже есть аккаунт?"
+                              ButtonContent="Войти"
+                              ButtonWidth="250" />
+
+    <controls:ButtonWithLabel Label="Потеряли доступ?"
+                              ButtonContent="Восстановить"
+                              ButtonWidth="250" />
+
+  </StackPanel>
+
+</Window>

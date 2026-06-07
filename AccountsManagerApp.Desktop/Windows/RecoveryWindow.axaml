@@ -1,0 +1,57 @@
+﻿<Window
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:controls="using:AccountsManagerApp.Desktop.Controls"
+  x:Class="AccountsManagerApp.Desktop.Windows.RecoveryWindow"
+  Title=""
+  WindowStartupLocation="CenterScreen"
+  CanResize="False"
+  Height="510"
+  Width="370">
+
+  <StackPanel
+    Orientation="Vertical"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Center"
+    Spacing="30">
+
+    <Grid
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch">
+
+      <Button
+        Classes="Return"
+        Click="OnReturnButton" />
+
+      <TextBlock
+        Classes="Title"
+        Text="Восстановление" />
+
+    </Grid>
+
+
+    <controls:InputWithLabel
+      x:Name="EmailInput"
+      Label="Почта"
+      ControlWidth="250" />
+
+    <controls:InputWithLabel
+      x:Name="PasswordInput"
+      PasswordChar="●"
+      Label="Новый пароль"
+      ControlWidth="250" />
+
+    <controls:InputWithLabel
+      x:Name="RepeatPasswordInput"
+      PasswordChar="●"
+      Label="Повторите пароль"
+      ControlWidth="250" />
+
+    <Button
+      Classes="Click"
+      Content="Сменить пароль"
+      Width="250"
+      Click="OnChangePasswordButton" />
+  </StackPanel>
+
+</Window>
