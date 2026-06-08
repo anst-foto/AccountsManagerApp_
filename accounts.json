@@ -1,14 +1,18 @@
 [
   {
-    "Email": "testaccount101@mail.com",
-    "Password": "Zz!1Zz!1#"
-  },
-  {
     "Email": "semyon204@mail.ru",
     "Password": "Zz!1Zz!1#Zz!1"
   },
   {
     "Email": "account555@gmail.com",
     "Password": "26@^@hshBSS"
+  },
+  {
+    "Email": "test101@gmail.com",
+    "Password": "Zz!1Zz!1#"
+  },
+  {
+    "Email": "testaccount101@mail.com",
+    "Password": "Zz!1Zz!1#2"
   }
 ]
