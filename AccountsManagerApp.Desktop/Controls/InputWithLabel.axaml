@@ -1,0 +1,25 @@
+﻿<UserControl
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="using:AccountsManagerApp.Desktop.Controls"
+  x:Class="AccountsManagerApp.Desktop.Controls.InputWithLabel"
+  x:DataType="local:InputWithLabel">
+
+  <!-- ReSharper disable Xaml.InvalidType -->
+  <StackPanel
+    Spacing="5"
+    Width="{Binding $parent[local:InputWithLabel].ControlWidth}">
+
+    <TextBlock
+      Text="{Binding $parent[local:InputWithLabel].Label}" />
+
+    <TextBox
+      Classes="Fluent"
+      Text="{Binding $parent[local:InputWithLabel].Value}"
+
+      PasswordChar="{Binding $parent[local:InputWithLabel].PasswordChar}" />
+    <!-- ReSharper restore Xaml.InvalidType -->
+
+  </StackPanel>
+
+</UserControl>

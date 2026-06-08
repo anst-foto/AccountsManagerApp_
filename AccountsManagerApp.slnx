@@ -1,8 +1,9 @@
 <Solution>
   <Folder Name="/others/">
-    <File Path=".editorconfig"/>
-    <File Path=".gitattributes"/>
-    <File Path=".gitignore"/>
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
   </Folder>
-  <Project Path="AccountsManagerApp.Desktop/AccountsManagerApp.Desktop.csproj"/>
+  <Project Path="AccountsManagerApp.Desktop/AccountsManagerApp.Desktop.csproj" />
+  <Project Path="AccountsManagerApp.Logic/AccountsManagerApp.Logic.csproj" />
 </Solution>
